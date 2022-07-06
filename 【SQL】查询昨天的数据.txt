@@ -1,0 +1,1 @@
+SELECT userObjectId FROM i_D117502SubsidyRecords WHERE TO_DAYS(NOW()) - TO_DAYS(changeTime) = 1
