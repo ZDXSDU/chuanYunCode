@@ -266,7 +266,7 @@ public class D117502interval: H3.SmartForm.SmartFormController
                     log["CreatedTime"] = DateTime.Now + string.Empty;
                     log["Content"] = "周末特供版-充值，共计 :" + num + "条；";
                     log["log"] = errorMsg;
-                    log["log2"] = "【测试ing】";
+                    log["log2"] = "【生产】";
                     log.Status = H3.DataModel.BizObjectStatus.Effective;
                     log.Create();
                 }
@@ -319,7 +319,7 @@ public class D117502interval: H3.SmartForm.SmartFormController
                     log["CreatedTime"] = DateTime.Now + string.Empty;
                     log["Content"] = "周末特供版-充值，共计 :" + num + "条";
                     log["log"] = errorMsg;
-                    log["log2"] = "【测试ing】";
+                    log["log2"] = "【生产】";
                     log.Status = H3.DataModel.BizObjectStatus.Effective;
                     log.Create();
                 }
@@ -372,7 +372,7 @@ public class D117502interval: H3.SmartForm.SmartFormController
                     log["CreatedTime"] = DateTime.Now + string.Empty;
                     log["Content"] = "周末特供版-充值，共计 :" + num + "条；";
                     log["log"] = errorMsg;
-                    log["log2"] = "【测试ing】";
+                    log["log2"] = "【生产】";
                     log.Status = H3.DataModel.BizObjectStatus.Effective;
                     log.Create();
                 }
@@ -384,7 +384,7 @@ public class D117502interval: H3.SmartForm.SmartFormController
                 log["CreatedTime"] = DateTime.Now + string.Empty;
                 log["Content"] = "周末特供版-充值，共计 :" + num + "条；";
                 log["log"] = "";
-                log["log2"] = "【测试ing】";
+                log["log2"] = "【生产】";
                 log.Status = H3.DataModel.BizObjectStatus.Effective;
                 log.Create();
             }
