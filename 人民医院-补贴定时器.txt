@@ -19,6 +19,9 @@ public class D117502interval: H3.SmartForm.SmartFormController
         H3.IEngine engine = this.Request.Engine;
         string systemUserId = H3.Organization.User.SystemUserId;
         // new Subsidies().StatisticsSubsidyIn(engine);
+
+
+       
     }
 
     protected override void OnSubmit(string actionName, H3.SmartForm.SmartFormPostValue postValue, H3.SmartForm.SubmitSmartFormResponse response)
@@ -59,13 +62,13 @@ public class D117502interval: H3.SmartForm.SmartFormController
             int weekDay = Convert.ToInt32(DateTime.Now.DayOfWeek);
             if(weekDay == 1)
             {
-                engine.Query.QueryTable("UPDATE I_D117502UserInformation SET week = " + weekOfYear + ", subsidiesThisWeekNumber = 0", null);
+                engine.Query.QueryTable("UPDATE I_D117502UserInformation SET week = " + weekOfYear + ", subsidiesThisWeekNumber = 0, subsidyBalance = 0", null);
                 H3.DataModel.BizObjectSchema logSchema = engine.BizObjectManager.GetPublishedSchema("D117502interval");
                 H3.DataModel.BizObject log = new H3.DataModel.BizObject(engine, logSchema, systemUserId);
                 log.CreatedBy = systemUserId;
                 log.OwnerId = systemUserId;
                 log["CreatedTime"] = now.ToString();
-                log["Content"] = "周一，不统计昨日补贴次数，仅重置当前周和次数";
+                log["Content"] = "周一，不统计补贴次数，仅重置当前周和次数";
                 log["log"] = "当前周：" + weekOfYear.ToString();
                 log.Status = H3.DataModel.BizObjectStatus.Effective;
                 log.Create();
@@ -85,7 +88,7 @@ public class D117502interval: H3.SmartForm.SmartFormController
                     filter.ToRowNum = j * 1000;
                     H3.Data.Filter.And andMatcher = new H3.Data.Filter.And();
                     andMatcher.Add(new H3.Data.Filter.ItemMatcher("startUsing", H3.Data.ComparisonOperatorType.Equal, "True"));
-                    andMatcher.Add(new H3.Data.Filter.ItemMatcher("isMoratorium", H3.Data.ComparisonOperatorType.Equal, "False"));
+                    // andMatcher.Add(new H3.Data.Filter.ItemMatcher("isMoratorium", H3.Data.ComparisonOperatorType.Equal, "False"));
                     filter.Matcher = andMatcher;
                     H3.DataModel.BizObjectSchema schema = engine.BizObjectManager.GetPublishedSchema("D117502UserInformation");
                     H3.DataModel.BizObject[] boArray = H3.DataModel.BizObject.GetList(engine, systemUserId, schema, H3.DataModel.GetListScopeType.GlobalAll, filter);
@@ -94,7 +97,7 @@ public class D117502interval: H3.SmartForm.SmartFormController
                         for(int i = 0;i < boArray.Length; i++)
                         {
                             H3.DataModel.BizObject bo = boArray[i];
-                            if(Convert.ToInt32(bo["subsidyBalance"]) < 10)
+                            if((Convert.ToInt32(bo["subsidyBalance"]) < 10) && (bo["isMoratorium"].ToString() == "False"))
                             {
                                 string obj = bo["ObjectId"].ToString();
                                 H3.DataModel.BizObject accountBo = H3.DataModel.BizObject.Load(systemUserId, engine, "D117502UserInformation", obj, false);
@@ -122,7 +125,7 @@ public class D117502interval: H3.SmartForm.SmartFormController
                         updateCommit.Commit(engine.BizObjectManager, out errorMsg);
                         fcommit.Commit(engine.BizObjectManager, out errorMsg);
                         log["CreatedTime"] = now.ToString();
-                        log["Content"] = "工作日 - 补贴消费统计 + 归零；第" + ((j * 1000).ToString()) + "条";
+                        log["Content"] = "Daily - 补贴消费统计 + 归零；第" + ((j * 1000).ToString()) + "条";
                         log["log"] = errorMsg;
                         log.Status = H3.DataModel.BizObjectStatus.Effective;
                         log.Create();
@@ -266,7 +269,7 @@ public class D117502interval: H3.SmartForm.SmartFormController
                     log["CreatedTime"] = DateTime.Now + string.Empty;
                     log["Content"] = "周末特供版-充值，共计 :" + num + "条；";
                     log["log"] = errorMsg;
-                    log["log2"] = "【生产】";
+                    // log["log2"] = "【测试ing】";
                     log.Status = H3.DataModel.BizObjectStatus.Effective;
                     log.Create();
                 }
@@ -319,7 +322,7 @@ public class D117502interval: H3.SmartForm.SmartFormController
                     log["CreatedTime"] = DateTime.Now + string.Empty;
                     log["Content"] = "周末特供版-充值，共计 :" + num + "条";
                     log["log"] = errorMsg;
-                    log["log2"] = "【生产】";
+                    // log["log2"] = "【测试ing】";
                     log.Status = H3.DataModel.BizObjectStatus.Effective;
                     log.Create();
                 }
@@ -372,7 +375,7 @@ public class D117502interval: H3.SmartForm.SmartFormController
                     log["CreatedTime"] = DateTime.Now + string.Empty;
                     log["Content"] = "周末特供版-充值，共计 :" + num + "条；";
                     log["log"] = errorMsg;
-                    log["log2"] = "【生产】";
+                    // log["log2"] = "【测试ing】";
                     log.Status = H3.DataModel.BizObjectStatus.Effective;
                     log.Create();
                 }
@@ -384,7 +387,7 @@ public class D117502interval: H3.SmartForm.SmartFormController
                 log["CreatedTime"] = DateTime.Now + string.Empty;
                 log["Content"] = "周末特供版-充值，共计 :" + num + "条；";
                 log["log"] = "";
-                log["log2"] = "【生产】";
+                // log["log2"] = "【测试ing】";
                 log.Status = H3.DataModel.BizObjectStatus.Effective;
                 log.Create();
             }
