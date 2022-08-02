@@ -54,18 +54,15 @@ public class D117502ElectronicRoadList1: H3.SmartForm.SmartFormController
                     aBo["amoust"] = detail["amout"];
                     aBo["beginTime"] = detail["startingTime"] + string.Empty;
                     aBo["endTime"] = detail["endTime"] + string.Empty;
+                    aBo["time"] = detail["F0000005"];
                     aBo["time1"] = detail["duration"];
                     aBo["class"] = detail["class"];
                     aBo.Status = H3.DataModel.BizObjectStatus.Effective;
                     aBo.Create();
 
-                    this.Request.Engine.BizObjectManager.CopyFiles("D117502ElectronicRoadList1", "D117502details1", "livePictures", "objectid", "D117502total","", "pic", "objectid", true, true);
+                    this.Request.Engine.BizObjectManager.CopyFiles("D117502ElectronicRoadList1", "D117502details1", "livePictures", "objectid", "D117502total", "", "pic", "objectid", true, true);
                 }
             }
-        }
-        if(oldState == H3.Workflow.Instance.WorkflowInstanceState.Finished && newState == H3.Workflow.Instance.WorkflowInstanceState.Running) // 流程审批结束后，重新激活流程（先执行业务规则，在执行该方法）。
-        {
-            
         }
         base.OnWorkflowInstanceStateChanged(oldState, newState);
     }
