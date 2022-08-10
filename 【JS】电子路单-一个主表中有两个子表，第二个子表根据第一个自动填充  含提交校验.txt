@@ -73,27 +73,45 @@ $.extend( $.JForm, {
         if( $.SmartForm.ResponseContext.ActivityCode == "Activity2" ) {
             var details = this.D117502details;// 用车 子表业务对象
             var details1 = this.D117502details1;// 派车 子表业务对象
+            var now = this.now.GetValue();
             details1.ClearRows(); // 清除子表中的所有行
             var rowsCount = this.D117502details.GetRowsCount();
             for( var i = 0;i < rowsCount;i++ ) {
                 var countInOneRow = details.GetValue()[ i ].numberOfUnits;
-                var temp = details.GetValue()[ i ];
-                if( countInOneRow > 1 ) {
-                    for( var j = 0;j < temp.numberOfUnits;j++ ) {
-                        var subObjectId = $.IGuid();  // 创建行ID
+
+                if( details.GetValue()[ i ].carTime < now ) {
+                    $.IShowWarn( "用车时间不能小于当前时间！" );
+                    return false;
+                } else {
+                    var temp = details.GetValue()[ i ];
+                    if( countInOneRow > 1 ) {
+                        for( var j = 0;j < temp.numberOfUnits;j++ ) {
+                            var subObjectId = $.IGuid();  // 创建行ID
+                            details1.AddRow( subObjectId, {
+                                "D117502details1.car": temp.tempObj,
+                                "D117502details1.startingTime": temp.carTime,
+                                "D117502details1.address": temp.F0000003
+                            })
+                        }
+                    } else if( countInOneRow == 1 ) {
+                        var subObjectId = $.IGuid();  //创建行ID
                         details1.AddRow( subObjectId, {
                             "D117502details1.car": temp.tempObj,
                             "D117502details1.startingTime": temp.carTime,
                             "D117502details1.address": temp.F0000003
                         })
                     }
-                } else if( countInOneRow == 1 ) {
-                    var subObjectId = $.IGuid();  //创建行ID
-                    details1.AddRow( subObjectId, {
-                        "D117502details1.car": temp.tempObj,
-                        "D117502details1.startingTime": temp.carTime,
-                        "D117502details1.address": temp.F0000003
-                    })
+                }
+            }
+        }
+        if( $.SmartForm.ResponseContext.ActivityCode == "Activity8" ) {
+            var details1 = this.D117502details1;// 派车 子表业务对象
+            var now = this.now.GetValue();
+            var rowsCount = details1.GetRowsCount();
+            for( var i = 0;i < rowsCount;i++ ) {
+                if( details1.GetValue()[ i ].endTime < details1.GetValue()[ i ].startingTime ) {
+                    $.IShowWarn( "结束时间不能小于开始时间！" );
+                    return false;
                 }
             }
         }
