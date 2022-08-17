@@ -16,9 +16,7 @@ public class D117502974f1fad35864bb887fe751861c29e69: H3.SmartForm.SmartFormCont
         response.Actions.Remove("Remove");
         response.Actions.Remove("Print");
         response.Actions.Remove("ViewQrCode");
-        H3.IEngine engine = this.Request.Engine;
-        new MyTest_Timer().holidayBeginTomorrow(engine); // 明天请假
-        new MyTest_Timer().holidayEndToday(engine); // 今天请完假
+        // new MyTest_Timer().updateNameOfbuffet(this.Engine);
     }
 
     protected override void OnSubmit(string actionName, H3.SmartForm.SmartFormPostValue postValue, H3.SmartForm.SubmitSmartFormResponse response)
@@ -48,7 +46,7 @@ public class MyTest_Timer: H3.SmartForm.Timer
         // 【每天 00:00 ~ 04:00】 运行补贴支付消费统计和归零；如果这个职工补贴余额小于10，那么就是他今天消费或者请假了，占用一次补贴次数
         if(sTime <= now && eTime >= now)
         {
-            statisticsAndClearZero(engine);     
+            statisticsAndClearZero(engine);
         }
         // 【周末 01:00 ~ 05:00】 运行周末特供版职工充值补贴，只有运行当天没有请假暂停并且在职并且本周补贴消费次数小于5次的小可爱才有机会得到补贴
         if(sTime2 <= now && eTime2 >= now && (week == 6 || week == 0))
@@ -60,6 +58,8 @@ public class MyTest_Timer: H3.SmartForm.Timer
         {
             recharge(engine);
         }
+        // 每隔4小时运行一次 将自助餐表单中空余的职工姓名字段补充完整
+        updateNameOfbuffet(engine);
     }
     public void holidayBeginTomorrow(H3.IEngine engine)
     {
@@ -77,7 +77,7 @@ public class MyTest_Timer: H3.SmartForm.Timer
             for(int i = 0;i < boArray.Length; i++)
             {
                 string JobNumber = boArray[i]["JobNumber"].ToString();
-                string employeeSuspensionSettObjectId = boArray[i]["ObjectId"].ToString();   
+                string employeeSuspensionSettObjectId = boArray[i]["ObjectId"].ToString();
                 H3.DataModel.BizObject UserInformation = H3.DataModel.BizObject.Load(systemUserId, engine, "D117502UserInformation", JobNumber, false);
                 UserInformation["isMoratorium"] = true;
                 UserInformation.Status = H3.DataModel.BizObjectStatus.Effective;
@@ -215,7 +215,7 @@ public class MyTest_Timer: H3.SmartForm.Timer
         }
         else
         {
-              string selectSQL = "SELECT COUNT(1) AS num FROM I_D117502UserInformation WHERE subsidyBalance < 10 AND startUsing = 1"; // 生产环境
+            string selectSQL = "SELECT COUNT(1) AS num FROM I_D117502UserInformation WHERE subsidyBalance < 10 AND startUsing = 1"; // 生产环境
             // string selectSQL = "SELECT COUNT(1) AS num FROM I_D117502Spem1xof74brn0h19b6nxpyxs3 WHERE subsidyBalance < 10 AND startUsing = 1"; // 测试环境
             System.Data.DataTable Count = engine.Query.QueryTable(selectSQL, null);
             int num = Convert.ToInt32(Count.Rows[0]["num"]);
@@ -295,5 +295,51 @@ public class MyTest_Timer: H3.SmartForm.Timer
         aBo["Errorlogs"] = "inerrancy";
         aBo.Status = H3.DataModel.BizObjectStatus.Effective;
         aBo.Create();
+    }
+    public void updateNameOfbuffet(H3.IEngine engine)
+    {
+        DateTime beforeDT = System.DateTime.Now;
+        string systemUserId = H3.Organization.User.SystemUserId;
+        string selectSQL = "SELECT COUNT(1) AS num FROM I_D117502OrdersBuffet WHERE userName = ''";
+        System.Data.DataTable Count = engine.Query.QueryTable(selectSQL, null);
+        int num = Convert.ToInt32(Count.Rows[0]["num"]);
+        if(num > 0) 
+        {
+            string rechargeSQL = "UPDATE I_D117502OrdersBuffet SET I_D117502OrdersBuffet.userName = (SELECT userName FROM I_D117502UserInformation WHERE I_D117502UserInformation.objectId = I_D117502OrdersBuffet.JobNumber) WHERE userName = ''";
+            engine.Query.QueryTable(rechargeSQL, null);
+            H3.DataModel.BizObjectSchema aSchema = engine.BizObjectManager.GetPublishedSchema("D117502974f1fad35864bb887fe751861c29e69");
+            H3.DataModel.BizObject aBo = new H3.DataModel.BizObject(engine, aSchema, systemUserId);
+            aBo.CreatedBy = systemUserId;
+            aBo.OwnerId = systemUserId;
+            aBo["Runtime"] = DateTime.Now + string.Empty;
+            aBo["description"] = "【循环】自助餐更新姓名";
+            aBo["count"] = num;
+            DateTime afterDT = System.DateTime.Now;
+            TimeSpan dt = afterDT.Subtract(beforeDT);
+            aBo["ExecutionTime"] = dt.ToString();
+            aBo["basedate"] = "“undefined”";
+            aBo["Debugmarkup"] = "4H 循环";
+            aBo["Errorlogs"] = "inerrancy";
+            aBo.Status = H3.DataModel.BizObjectStatus.Effective;
+            aBo.Create();
+        }
+        else
+        {
+            H3.DataModel.BizObjectSchema aSchema = engine.BizObjectManager.GetPublishedSchema("D117502974f1fad35864bb887fe751861c29e69");
+            H3.DataModel.BizObject aBo = new H3.DataModel.BizObject(engine, aSchema, systemUserId);
+            aBo.CreatedBy = systemUserId;
+            aBo.OwnerId = systemUserId;
+            aBo["Runtime"] = DateTime.Now + string.Empty;
+            aBo["description"] = "【循环】自助餐更新姓名";
+            aBo["count"] = 0;
+            DateTime afterDT = System.DateTime.Now;
+            TimeSpan dt = afterDT.Subtract(beforeDT);
+            aBo["ExecutionTime"] = dt.ToString();
+            aBo["basedate"] = "“undefined”";
+            aBo["Debugmarkup"] = "4H 循环";
+            aBo["Errorlogs"] = "未找到可执行的数据";
+            aBo.Status = H3.DataModel.BizObjectStatus.Effective;
+            aBo.Create();
+        }
     }
 }

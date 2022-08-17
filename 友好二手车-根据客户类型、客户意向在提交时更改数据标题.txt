@@ -7,9 +7,10 @@
         }
         else 
         {
-            if(this.Request.BizObject["clientTypePC"] == "个人")
+            if(this.Request.BizObject["clientTypePC"].ToString() == "个人")
             {
-                this.Request.Engine.Query.QueryTable("UPDATE I_D117502UsedCarCustomers SET Name = '" + this.Request.BizObject["clientName"].ToString() + "' WHERE ObjectId = '" + this.Request.BizObjectId.ToString() + "'", null);
+                string SQL = "UPDATE I_D117502UsedCarCustomers SET Name = '" + this.Request.BizObject["clientName"].ToString() + "' WHERE ObjectId = '" + this.Request.BizObjectId.ToString() + "'";
+                this.Request.Engine.Query.QueryTable(SQL, null);
             }
             else 
             {
