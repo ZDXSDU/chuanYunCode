@@ -1,0 +1,45 @@
+// 基础表单中 需要有最大值 最小值
+
+JS》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》
+
+
+ var that = this;
+        this.year.BindChange( "自动选择设备使用年限区间", () => {
+            if( that.year.GetValue() > 0 ) { 
+                debugger;
+                $.SmartForm.PostForm( "SelectYearOf", {
+                    year: that.year.GetValue()
+                }, ( data ) => {
+                    if( data.Errors && data.Errors.length ) {
+                        $.IShowError( "错误", JSON.stringify( data.Errors ) );
+                    } else {
+                        that.yearOf.SetValue( data.ReturnData.OBJ );
+                    }
+                }, ( error ) => {
+                    $.IShowError( "错误", JSON.stringify( error ) );
+                }, false )
+            }
+        })
+		
+		
+		
+c#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+if(actionName == "SelectYearOf")
+        {
+            response.ReturnData = new Dictionary<string, object>();
+            string ReturnData_year = this.Request["year"];
+            double year = double.Parse(ReturnData_year);
+            string SELECT_SQL = "SELECT ObjectId, min, max FROM I_D117502years WHERE isUse = 1";
+            System.Data.DataTable SelectDT = this.Engine.Query.QueryTable(SELECT_SQL, null);
+            int length = SelectDT.Rows.Count;
+            for(int i = 0;i < length; i++)
+            {
+                double min = double.Parse(SelectDT.Rows[i]["min"].ToString());
+                double max = double.Parse(SelectDT.Rows[i]["max"].ToString());
+                if(year <= max && year > min)
+                {
+                    response.ReturnData.Add("OBJ", SelectDT.Rows[i]["ObjectId"].ToString());
+                    break;
+                }
+            }
+        }
