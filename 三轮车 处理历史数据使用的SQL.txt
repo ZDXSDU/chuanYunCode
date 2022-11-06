@@ -1,0 +1,1 @@
+UPDATE I_D117502Sogsss4gokiktazse3ourmyza6 SET BfileID = (SELECT objectId FROM H_bizobjectfile WHERE schemacode = 'D117502Sogsss4gokiktazse3ourmyza6' AND propertyname = 'F0000004' AND bizobjectid = I_D117502Sogsss4gokiktazse3ourmyza6.objectId) WHERE I_D117502Sogsss4gokiktazse3ourmyza6.BfileID = ''
