@@ -1,0 +1,32 @@
+<html>
+
+<head>
+  <style>
+    body {
+      -webkit-filter: saturate(0%) !important;
+      filter: saturate(0%) !important;
+    }
+  </style>
+  <script>
+    const cors = require('cors');
+    app.use(cors())
+    app.listen(8000, function () {
+      console.log('start')
+    })
+
+
+    var request = new XMLHttpRequest();
+    request.open('GET', 'https://applet.anyouxian.cn/api/milk/hello');
+    request.responseType = 'text';
+    request.onload = function () {
+      var data = this.response;
+      console.log(data);
+    };
+    request.send(null);
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>
