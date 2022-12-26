@@ -1,0 +1,84 @@
+前端
+$.ListView.ActionPreDo = ( actionCode ) => {
+    if( actionCode == 'Verification' ) {
+        let objects = $.ListView.GetSelected();
+        let OBJs = '';
+        if( objects == null || objects == undefined || objects == "" ) {
+            $.IShowWarn( '您还未勾选订单,请勾选！' );
+            return;
+        }
+        else {
+            for( let i = 0;i < objects.length;i++ ) {
+                OBJs += ( objects[ i ].ObjectId + ',' );
+            }
+            setTimeout(() => {
+                $.ListView.Post( "Verification", {
+                    OBJs: OBJs.substr( 0, OBJs.length - 1 )
+                }, ( data ) => {
+                    if( data.ReturnData == null || !data.ReturnData.Message ) {
+                        $.ListView.RefreshView();
+                        $.IShowSuccess( '核销完成！' );
+                    }
+                    else {
+                        if( data.ReturnData != null && data.ReturnData.Message ) {
+                            $.IShowError( data.ReturnData.Message );
+                        } else {
+                            $.IShowError( '核销失败！请联系管理员处理' );
+                        }
+                    }
+                }, ( data ) => {
+                    $.IShowError( data.Errors[ 0 ] );
+                }, false );
+            }, 1000 )
+        }
+    }
+};
+后端
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+using H3;
+
+public class D117502OrdersCommodity_ListViewController: H3.SmartForm.ListViewController
+{
+    public D117502OrdersCommodity_ListViewController(H3.SmartForm.ListViewRequest request): base(request)
+    {
+    }
+
+    protected override void OnLoad(H3.SmartForm.LoadListViewResponse response)
+    {
+        base.OnLoad(response);
+    }
+
+    protected override void OnSubmit(string actionName, H3.SmartForm.ListViewPostValue postValue, H3.SmartForm.SubmitListViewResponse response)
+    {
+        base.OnSubmit(actionName, postValue, response);
+        if(actionName == "Verification")
+        {
+            response.ReturnData = new Dictionary<string, object>();
+            string OBJs = this.Request["OBJs"] + string.Empty;
+            if(string.IsNullOrEmpty(OBJs))
+            {
+                response.ReturnData.Add("Message", "数据对象未获取到！");
+                return;
+            }
+            else
+            {
+                string[] ObjectIds = OBJs.Split(',');
+                H3.DataModel.BulkCommit commit = new H3.DataModel.BulkCommit();
+                for(int i = 0;i < ObjectIds.Length; i++)
+                {
+                    H3.DataModel.BizObject accountBo = H3.DataModel.BizObject.Load(H3.Organization.User.SystemUserId, this.Request.Engine, "D117502OrdersCommodity", ObjectIds[i], false);
+                    accountBo["F0000002"] = "已收货";
+                    accountBo["OBJs"] = this.Request.UserContext.UserId;
+                    accountBo["OBJsT"] = DateTime.Now + string.Empty;
+                    accountBo.Status = H3.DataModel.BizObjectStatus.Effective;
+                    accountBo.Update(commit);
+                }
+                string errorMsg = null;
+                commit.Commit(this.Request.Engine.BizObjectManager, out errorMsg);
+            }
+        }
+    }
+}
