@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <style>html {font-family: sans-serif;line-height: 1.15;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;}body {margin: 0;}article,aside,footer,header,nav,section {display: block;}h1 {font-size: 2em;margin: 0.67em 0;}figcaption,figure,main {display: block;}figure {margin: 1em 40px;}hr {box-sizing: content-box;height: 0;overflow: visible;}pre {font-family: monospace, monospace;font-size: 1em;}a {background-color: transparent;-webkit-text-decoration-skip: objects;}a:active,a:hover {outline-width: 0;}       abbr[title] {border-bottom: none;            text-decoration: underline;text-decoration: underline dotted;}b,strong {font-weight: inherit;}b,strong {font-weight: bolder;}code,kbd,samp {font-family: monospace, monospace;font-size: 1em;}dfn {font-style: italic;}mark {background-color: #ff0;color: #000;}small {font-size: 80%;}sub,sup {font-size: 75%;line-height: 0;position: relative;vertical-align: baseline;}sub {bottom: -0.25em;}sup {top: -0.5em;}audio,video {display: inline-block;}audio:not([controls]) {display: none;height: 0;}img {border-style: none;}svg:not(:root) {overflow: hidden;}button,input,optgroup,select,textarea {font-family: sans-serif;font-size: 100%;line-height: 1.15;margin: 0;}button,input {overflow: visible;}button,select {text-transform: none;}button,html [type="button"],[type="reset"],[type="submit"] {-webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {border-style: none;padding: 0;}button:-moz-focusring,[type="button"]:-moz-focusring,[type="reset"]:-moz-focusring,[type="submit"]:-moz-focusring {outline: 1px dotted ButtonText;}fieldset {border: 1px solid #c0c0c0;margin: 0 2px;padding: 0.35em 0.625em 0.75em;}legend {box-sizing: border-box;color: inherit;display: table;max-width: 100%;padding: 0;white-space: normal;}progress {display: inline-block;vertical-align: baseline;}textarea {overflow: auto;}[type="checkbox"],[type="radio"] {box-sizing: border-box;padding: 0;}[type="number"]::-webkit-inner-spin-button,[type="number"]::-webkit-outer-spin-button {height: auto;}[type="search"] {-webkit-appearance: textfield;outline-offset: -2px;}[type="search"]::-webkit-search-cancel-button,[type="search"]::-webkit-search-decoration {-webkit-appearance: none;}::-webkit-file-upload-button {-webkit-appearance: button;font: inherit;}details,menu {display: block;}summary {display: list-item;}canvas {display: inline-block;}template {display: none;}[hidden] {display: none;}</style> -->
+</head>
+
+<body>
+    <!-- <div class='a'>
+        <style>
+            html {
+                font-family: sans-serif;
+                line-height: 1.15;
+                -ms-text-size-adjust: 100%;
+                -webkit-text-size-adjust: 100%;
+            }
+
+            body {
+                margin: 0;
+            }
+
+            article,
+            aside,
+            footer,
+            header,
+            nav,
+            section {
+                display: block;
+            }
+
+            h1 {
+                font-size: 2em;
+                margin: 0.67em 0;
+            }
+
+            figcaption,
+            figure,
+            main {
+                display: block;
+            }
+
+            figure {
+                margin: 1em 40px;
+            }
+
+            hr {
+                box-sizing: content-box;
+                height: 0;
+                overflow: visible;
+            }
+
+            pre {
+                font-family: monospace, monospace;
+                font-size: 1em;
+            }
+
+            a {
+                background-color: transparent;
+                -webkit-text-decoration-skip: objects;
+            }
+
+            a:active,
+            a:hover {
+                outline-width: 0;
+            }
+
+            abbr[title] {
+                border-bottom: none;
+                text-decoration: underline;
+                text-decoration: underline dotted;
+            }
+
+            b,
+            strong {
+                font-weight: inherit;
+            }
+
+            b,
+            strong {
+                font-weight: bolder;
+            }
+
+            code,
+            kbd,
+            samp {
+                font-family: monospace, monospace;
+                font-size: 1em;
+            }
+
+            dfn {
+                font-style: italic;
+            }
+
+            mark {
+                background-color: #ff0;
+                color: #000;
+            }
+
+            small {
+                font-size: 80%;
+            }
+
+            sub,
+            sup {
+                font-size: 75%;
+                line-height: 0;
+                position: relative;
+                vertical-align: baseline;
+            }
+
+            sub {
+                bottom: -0.25em;
+            }
+
+            sup {
+                top: -0.5em;
+            }
+
+            audio,
+            video {
+                display: inline-block;
+            }
+
+            audio:not([controls]) {
+                display: none;
+                height: 0;
+            }
+
+            img {
+                border-style: none;
+            }
+
+            svg:not(:root) {
+                overflow: hidden;
+            }
+
+            button,
+            input,
+            optgroup,
+            select,
+            textarea {
+                font-family: sans-serif;
+                font-size: 100%;
+                line-height: 1.15;
+                margin: 0;
+            }
+
+            button,
+            input {
+                overflow: visible;
+            }
+
+            button,
+            select {
+                text-transform: none;
+            }
+
+            button,
+            html [type="button"],
+            [type="reset"],
+            [type="submit"] {
+                -webkit-appearance: button;
+            }
+
+            button::-moz-focus-inner,
+            [type="button"]::-moz-focus-inner,
+            [type="reset"]::-moz-focus-inner,
+            [type="submit"]::-moz-focus-inner {
+                border-style: none;
+                padding: 0;
+            }
+
+            button:-moz-focusring,
+            [type="button"]:-moz-focusring,
+            [type="reset"]:-moz-focusring,
+            [type="submit"]:-moz-focusring {
+                outline: 1px dotted ButtonText;
+            }
+
+            fieldset {
+                border: 1px solid #c0c0c0;
+                margin: 0 2px;
+                padding: 0.35em 0.625em 0.75em;
+            }
+
+            legend {
+                box-sizing: border-box;
+                color: inherit;
+                display: table;
+                max-width: 100%;
+                padding: 0;
+                white-space: normal;
+            }
+
+            progress {
+                display: inline-block;
+                vertical-align: baseline;
+            }
+
+            textarea {
+                overflow: auto;
+            }
+
+            [type="checkbox"],
+            [type="radio"] {
+                box-sizing: border-box;
+                padding: 0;
+            }
+
+            [type="number"]::-webkit-inner-spin-button,
+            [type="number"]::-webkit-outer-spin-button {
+                height: auto;
+            }
+
+            [type="search"] {
+                -webkit-appearance: textfield;
+                outline-offset: -2px;
+            }
+
+            [type="search"]::-webkit-search-cancel-button,
+            [type="search"]::-webkit-search-decoration {
+                -webkit-appearance: none;
+            }
+
+            ::-webkit-file-upload-button {
+                -webkit-appearance: button;
+                font: inherit;
+            }
+
+            details,
+            menu {
+                display: block;
+            }
+
+            summary {
+                display: list-item;
+            }
+
+            canvas {
+                display: inline-block;
+            }
+
+            template {
+                display: none;
+            }
+
+            [hidden] {
+            display: none;
+            }
+        </style>
+        <style>
+            /**
+            * 0. 用JS获取选中的数据的objectid length
+            * 1. 判断 如果没有选中任何行的时候退出，else
+            * 2. 把JS获取的这些玩意传递给后端C# $.postLists("",{},()=>{},()=>{},false)
+            * 3. C# 遍历100个obj，业务对象根据objectid查询数据
+            * 4. 把结果封装成JSON格式 传回给前端JS
+            * 5. JS 收到后端传回来的JSON解析、遍历、追加innerHTML的页面元素
+            * 6. 前端利用window对象调起打印
+            */
+            .a {width: 210mm;height: 340mm;font-size: 14pt;font-family: SimSun, 宋体, serif;color: black;line-height: 1.4;text-align: justify;margin: 0;padding: 0;}.b {width: 210mm;height: 340mm;padding: 0 24mm 0 24mm;background-color: #fff;}table {width: 45%;float: left;margin: 3.0% 2.5%;}td {margin: 0;padding-left: 6px;}.TDl {width: 45%;}.TDll {width: 20%;}.bTop {border-top: 1px solid #555;}.bRight {border-right: 1px solid #555;}.bBottom {border-bottom: 1px solid #555;}.bLeft {border-left: 1px solid #555;}.line {width: 100%;border-bottom: 1px dashed #555;*zoom: 1;}.line::after {visibility: hidden;clear: both;display: block;content: ".";height: 0}
+        </style>
+        <div class='b'>
+            <table cellspacing="0" cellpadding="0"><tr><td class="bTop bRight bLeft" style="text-align: center;font-weight: 600;" colspan="4">滨州事业部本部店</td></tr>
+                <tr><td colspan="2" class="bTop bRight bBottom bLeft TDl">配件号</td><td colspan="2" class="bTop bRight bBottom">123456</td></tr>
+                <tr><td colspan="2" class="bRight bBottom bLeft TDl">配件名称</td><td colspan="2" class="bRight bBottom">阿毛阿狗</td></tr>
+                <tr><td colspan="2" class="bRight bBottom bLeft TDl">位置码</td><td colspan="2" class="bRight bBottom">85646574616</td></tr>
+                <tr><td colspan="2" class="bRight bBottom bLeft TDl">适用车型</td><td colspan="2" class="bRight bBottom">(HB)(HC)(HD)(HE)(HT)(AB)(HE)(HT)(AB)(AC)(AD)(ADC)(AP)(AC)(AD)(ADC)(AP)</td></tr>
+                <tr><td class="bRight bBottom bLeft TDll">出库价</td><td class="bRight bBottom">22.20</td><td class="bRight bBottom TDll">周转率</td><td class="bRight bBottom">22.20%</td></tr>
+                <tr><td class="bRight bBottom bLeft TDll">备注</td><td colspan="3" class="bRight bBottom">没有备注</td></tr></table>
+            <table cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="bTop bRight bBottom bLeft TDl">配件号</td>
+                    <td colspan="2" class="bTop bRight bBottom">123456</td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="bRight bBottom bLeft TDl">配件名称</td>
+                    <td colspan="2" class="bRight bBottom">阿毛阿狗</td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="bRight bBottom bLeft TDl">位置码</td>
+                    <td colspan="2" class="bRight bBottom">85646574616</td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="bRight bBottom bLeft TDl">适用车型</td>
+                    <td colspan="2" class="bRight bBottom">
+                        (HB)(HC)(HD)(HE)(HT)(AB)(HE)(HT)(AB)(AC)(AD)(ADC)(AP)(AC)(AD)(ADC)(AP)</td>
+                </tr>
+                <tr>
+                    <td class="bRight bBottom bLeft TDll">出库价</td>
+                    <td class="bRight bBottom">22.20</td>
+                    <td class="bRight bBottom TDll">周转率</td>
+                    <td class="bRight bBottom">22.20%</td>
+                </tr>
+                <tr>
+                    <td class="bRight bBottom bLeft TDll">高限</td>
+                    <td class="bRight bBottom">20</td>
+                    <td class="bRight bBottom TDll">低限</td>
+                    <td class="bRight bBottom">3</td>
+                </tr>
+                <tr>
+                    <td class="bRight bBottom bLeft TDll">备注</td>
+                    <td colspan="3" class="bRight bBottom">没有备注</td>
+                </tr>
+            </table>
+            <div class="line"></div>
+
+
+
+
+
+
+
+
+            <table cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="2" class="bTop bRight bBottom bLeft TDl">配件号</td>
+                    <td colspan="2" class="bTop bRight bBottom">123456</td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="bRight bBottom bLeft TDl">配件名称</td>
+                    <td colspan="2" class="bRight bBottom">阿毛阿狗</td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="bRight bBottom bLeft TDl">位置码</td>
+                    <td colspan="2" class="bRight bBottom">85646574616</td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="bRight bBottom bLeft TDl">适用车型</td>
+                    <td colspan="2" class="bRight bBottom">
+                        (HB)(HC)(HD)(HE)(HT)(AB)(HE)(HT)(AB)(AC)(AD)(ADC)(AP)(AC)(AD)(ADC)(AP)</td>
+                </tr>
+                <tr>
+                    <td class="bRight bBottom bLeft TDll">出库价</td>
+                    <td class="bRight bBottom">22.20</td>
+                    <td class="bRight bBottom TDll">周转率</td>
+                    <td class="bRight bBottom">22.20%</td>
+                </tr>
+                <tr>
+                    <td class="bRight bBottom bLeft TDll">高限</td>
+                    <td class="bRight bBottom">20</td>
+                    <td class="bRight bBottom TDll">低限</td>
+                    <td class="bRight bBottom">3</td>
+                </tr>
+                <tr>
+                    <td class="bRight bBottom bLeft TDll">备注</td>
+                    <td colspan="3" class="bRight bBottom">没有备注</td>
+                </tr>
+            </table>
+
+        </div></div> -->
+
+        VM55:51 <div class='a'><style>html {font-family: sans-serif;line-height: 1.15;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;} body {margin: 0;}article,aside,
+            footer,header,nav,section {display: block;}h1 {font-size: 2em;margin: 0.67em 0;}figcaption,figure,main {display: block;} figure {margin: 1em 40px;}hr {box-sizing: content-box;height: 0;
+            overflow: visible;}pre {font-family: monospace, monospace;font-size: 1em;} a {background-color: transparent;-webkit-text-decoration-skip: objects;}a:active,a:hover {outline-width: 0;} 
+            abbr[title] {border-bottom: none; text-decoration: underline;text-decoration: underline dotted;}b,strong {font-weight: inherit;}b,strong {font-weight: bolder;}code,kbd,samp {font-family: 
+            monospace, monospace;font-size: 1em;}dfn {font-style: italic;}mark {background-color: #ff0;color: #000;}small {font-size: 80%;}sub,sup {font-size: 75%;line-height: 0;position: relative;
+            vertical-align: baseline;}sub {bottom: -0.25em;}sup {top: -0.5em;}audio,video {display: inline-block;}audio:not([controls]) {display: none;height: 0;}img {border-style: none;}svg:not(:root) {
+            overflow: hidden;}button,input,optgroup,select,textarea {font-family: sans-serif;font-size: 100%;line-height: 1.15;margin: 0;}button,input {overflow: visible;}button,select {
+            text-transform: none;}button,html [type="button"],[type="reset"],[type="submit"] {-webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,
+            [type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {border-style: none;padding: 0;}button:-moz-focusring,[type="button"]:-moz-focusring,[type="reset"]:-moz-focusring,
+            [type="submit"]:-moz-focusring {outline: 1px dotted ButtonText;}fieldset {border: 1px solid #c0c0c0;margin: 0 2px;padding: 0.35em 0.625em 0.75em;}legend {box-sizing: border-box;
+            color: inherit;display: table;max-width: 100%;padding: 0;white-space: normal;}progress {display: inline-block;vertical-align: baseline;}textarea {overflow: auto;}[type="checkbox"],
+            [type="radio"] {box-sizing: border-box;padding: 0;}[type="number"]::-webkit-inner-spin-button,[type="number"]::-webkit-outer-spin-button {height: auto;}[type="search"] 
+            {-webkit-appearance: textfield;outline-offset: -2px;}[type="search"]::-webkit-search-cancel-button,[type="search"]::-webkit-search-decoration {-webkit-appearance: none;}
+            ::-webkit-file-upload-button {-webkit-appearance: button;font: inherit;}details,menu {display: block;}summary {display: list-item;}canvas {display: inline-block;}template {display: none;}
+            [hidden] {display: none;}</style><style>.a {width: 210mm;height: 340mm;font-size: 14pt;font-family: SimSun, 宋体, serif;color: black;line-height: 1.4;text-align: justify;margin: 0;padding: 0;}
+            .b {width: 210mm;height: 340mm;padding: 0 24mm 0 24mm;background-color: #fff;}table {width: 45%;float: left;margin: 3.0% 2.5%;}td {margin: 0;padding-left: 6px;}.TDl {width: 45%;}.TDll {width: 20%;
+            }.bTop {border-top: 1px solid #555;}.bRight {border-right: 1px solid #555;}.bBottom {border-bottom: 1px solid #555;}.bLeft {border-left: 1px solid #555;}.line {width: 100%;
+            border-bottom: 1px dashed #555;*zoom: 1;}.line::after {visibility: hidden;clear: both;display: block;content: ".";height: 0}</style><div class='b'><table cellspacing="0" cellpadding="0"><tr><td class="bTop bRight bLeft" style="text-align: center;font-weight: 600;" colspan="4">滨州事业部无棣友好店</td></tr><tr><td colspan="2" class="bTop bRight bBottom bLeft TDl">配件号</td><td colspan="2" class="bTop bRight bBottom">*60003162</td></tr><tr><td colspan="2" class="bRight bBottom bLeft TDl">配件名称</td><td colspan="2" class="bRight bBottom">硝基稀料</td></tr><tr><td colspan="2" class="bRight bBottom bLeft TDl">货位号</td><td colspan="2" class="bRight bBottom">F04-03-A01</td></tr><tr><td colspan="2" class="bRight bBottom bLeft TDl">适用车型</td><td colspan="2" class="bRight bBottom">(HB)(HC)(HD)(HE)(HT)(AB)(HE)(HT)(AB)(AC)(AD)(ADC)(AP)(AC)(AD)(ADC)(AP)</td></tr><tr><td class="bRight bBottom bLeft TDll">出库价</td><td class="bRight bBottom">70</td><td class="bRight bBottom TDll">周转率</td><td class="bRight bBottom">22.20%</td></tr><tr><td class="bRight bBottom bLeft TDll">备注</td><td colspan="3" class="bRight bBottom">没有备注</td></tr></table><table cellspacing="0" cellpadding="0"><tr><td class="bTop bRight bLeft" style="text-align: center;font-weight: 600;" colspan="4">滨州事业部本部店</td></tr><tr><td colspan="2" class="bTop bRight bBottom bLeft TDl">配件号</td><td colspan="2" class="bTop bRight bBottom">*60003193</td></tr><tr><td colspan="2" class="bRight bBottom bLeft TDl">配件名称</td><td colspan="2" class="bRight bBottom">除油布</td></tr><tr><td colspan="2" class="bRight bBottom bLeft TDl">货位号</td><td colspan="2" class="bRight bBottom">0小屋架子</td></tr><tr><td colspan="2" class="bRight bBottom bLeft TDl">适用车型</td><td colspan="2" class="bRight bBottom">(HB)(HC)(HD)(HE)(HT)(AB)</td></tr><tr><td class="bRight bBottom bLeft TDll">出库价</td><td class="bRight bBottom">395</td><td class="bRight bBottom TDll">周转率</td><td class="bRight bBottom">22.20%</td></tr><tr><td class="bRight bBottom bLeft TDll">备注</td><td colspan="3" class="bRight bBottom">没有备注</td></tr></table><table cellspacing="0" cellpadding="0"><tr><td class="bTop bRight bLeft" style="text-align: center;font-weight: 600;" colspan="4">滨州事业部大展店</td></tr><tr><td colspan="2" class="bTop bRight bBottom bLeft TDl">配件号</td><td colspan="2" class="bTop bRight bBottom">*60003152</td></tr><tr><td colspan="2" class="bRight bBottom bLeft TDl">配件名称</td><td colspan="2" class="bRight bBottom">自喷漆黑</td></tr><tr><td colspan="2" class="bRight bBottom bLeft TDl">货位号</td><td colspan="2" class="bRight bBottom">AYP-A21</td></tr><tr><td colspan="2" class="bRight bBottom bLeft TDl">适用车型</td><td colspan="2" class="bRight bBottom">(HB)(HC)(HD)(HE)(HT)(AB)(HE)(HT)(AB)(AC)</td></tr><tr><td class="bRight bBottom bLeft TDll">出库价</td><td class="bRight bBottom">20</td><td class="bRight bBottom TDll">周转率</td><td class="bRight bBottom">22.20%</td></tr><tr><td class="bRight bBottom bLeft TDll">备注</td><td colspan="3" class="bRight bBottom">没有备注</td></tr></table><table cellspacing="0" cellpadding="0"><tr><td class="bTop bRight bLeft" style="text-align: center;font-weight: 600;" colspan="4">滨州事业部本部店</td></tr><tr><td colspan="2" class="bTop bRight bBottom bLeft TDl">配件号</td><td colspan="2" class="bTop bRight bBottom">*60003181</td></tr><tr><td colspan="2" class="bRight bBottom bLeft TDl">配件名称</td><td colspan="2" class="bRight bBottom">干磨砂纸</td></tr><tr><td colspan="2" class="bRight bBottom bLeft TDl">货位号</td><td colspan="2" class="bRight bBottom">A01-04-B07</td></tr><tr><td colspan="2" class="bRight bBottom bLeft TDl">适用车型</td><td colspan="2" class="bRight bBottom">(HB)(HC)(HD)(HE)(HT)(AB)(HE)(HT)(AB)(AC)(AD)(ADC)(AP)(AC)(AD)(ADC)(AP)</td></tr><tr><td class="bRight bBottom bLeft TDll">出库价</td><td class="bRight bBottom">10</td><td class="bRight bBottom TDll">周转率</td><td class="bRight bBottom">22.20%</td></tr><tr><td class="bRight bBottom bLeft TDll">备注</td><td colspan="3" class="bRight bBottom">没有备注</td></tr></table></div></div>
+</body>
+
+</html>
