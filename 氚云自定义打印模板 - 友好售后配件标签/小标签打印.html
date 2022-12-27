@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class='a'>
+        <style>
+            html {
+                font-family: sans-serif;
+                line-height: 1.15;
+                -ms-text-size-adjust: 100%;
+                -webkit-text-size-adjust: 100%;
+            }
+
+            body {
+                margin: 0;
+                background-color: #555;
+            }
+
+            @media print {
+                @page {
+                    margin: 1cm 0;
+                }
+
+                body {
+                    margin: 1cm 0;
+                }
+            }
+
+            .a {
+                width: 210mm;
+                font-size: 10pt;
+                font-family: SimSun, serif;
+                color: black;
+                text-align: justify;
+                margin: 0;
+                padding: 0;
+            }
+
+            .b {
+                width: 210mm;
+                background-color: #fff;
+            }
+
+            table {
+                width: 48%;
+                float: left;
+                margin: 1% 1%;
+            }
+
+            td {
+                margin: 0;
+                padding-left: 2px;
+            }
+
+            .bTop {
+                border-top: 1px solid #555;
+            }
+
+            .bRight {
+                border-right: 1px solid #555;
+            }
+
+            .bBottom {
+                border-bottom: 1px solid #555;
+            }
+
+            .bLeft {
+                border-left: 1px solid #555;
+            }
+
+            .line {
+                width: 100%;
+                border-bottom: 1px dashed #555;
+                *zoom: 1;
+            }
+
+            .line::after {
+                visibility: hidden;
+                clear: both;
+                display: block;
+                content: ".";
+                height: 0
+            }
+
+            .pageTo {
+                page-break-after: always;
+            }
+
+            .print {
+                position: fixed;
+                top: 60px;
+                left: 250mm;
+                width: 160px;
+                height: 52px;
+                font-size: 26px;
+                color: #000;
+                font-weight: 600;
+                line-height: 52px;
+                text-align: center;
+                font-family: SimSun, 宋体, serif;
+                border-radius: 5px;
+                box-shadow: 2px 2px 4px 4px rgb(0 0 0 / 20%);
+                animation: shine .5s infinite;
+                cursor: pointer;
+            }
+
+            .print:hover {
+                background-color: #000;
+                color: #fff;
+            }
+
+            @keyframes shine {
+
+                0%,
+                100% {
+                    box-shadow: 2px 2px 6px 6px rgba(0, 255, 0, 1);
+                }
+
+                50% {
+                    box-shadow: 2px 2px 6px 6px rgba(255, 0, 0, 1);
+                }
+            }
+
+            .TD20 {
+                width: 17%;
+                text-align: center;
+            }
+
+            .TD30 {
+                width: 35%;
+                text-align: left;
+            }
+        </style>
+        <div class="print">点我打印</div>
+        <div class="b">
+            <table cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="bTop bRight bBottom bLeft TD20">配件号</td>
+                    <td class="bTop bRight bBottom">XB-8103122</td>
+                    <td class="bTop bRight bBottom TD20">适用车型</td>
+                    <td class="bTop bRight bBottom TD30">(AB)(AC)(XK)(XL)(AK)</td>
+                </tr>
+                <tr>
+                    <td class="bRight bBottom bLeft TD20">配件名称</td>
+                    <td class="bRight bBottom">暖风机水管0.3米</td>
+                    <td class="bRight bBottom TD20">出库价</td>
+                    <td class="bRight bBottom TD30">12.50</td>
+                </tr>
+                <tr>
+                    <td class="bRight bBottom bLeft TD20">货位号</td>
+                    <td colspan="3" class="bRight bBottom">A04-08-B03</td>
+                </tr>
+            </table>
+            <table cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="bTop bRight bBottom bLeft TD20">配件号</td>
+                    <td class="bTop bRight bBottom">XB-8103122</td>
+                    <td class="bTop bRight bBottom TD20">适用车型</td>
+                    <td class="bTop bRight bBottom TD30">(AB)(AC)(XK)(XL)(AK)(AB)</td>
+                </tr>
+                <tr>
+                    <td class="bRight bBottom bLeft TD20">配件名称</td>
+                    <td class="bRight bBottom">暖风机水管0.3米</td>
+                    <td class="bRight bBottom TD20">出库价</td>
+                    <td class="bRight bBottom TD30">12.50</td>
+                </tr>
+                <tr>
+                    <td class="bRight bBottom bLeft TD20">货位号</td>
+                    <td colspan="3" class="bRight bBottom">A04-08-B03</td>
+                </tr>
+            </table>
+            <div class="line"></div>
+            <table cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="bTop bRight bBottom bLeft TD20">配件号</td>
+                    <td class="bTop bRight bBottom">XB-8103122</td>
+                    <td class="bTop bRight bBottom TD20">适用车型</td>
+                    <td class="bTop bRight bBottom TD30">(AB)(AC)(XK)(XL)(AK)</td>
+                </tr>
+                <tr>
+                    <td class="bRight bBottom bLeft TD20">配件名称</td>
+                    <td class="bRight bBottom">暖风机水管0.3米</td>
+                    <td class="bRight bBottom TD20">出库价</td>
+                    <td class="bRight bBottom TD30">12.50</td>
+                </tr>
+                <tr>
+                    <td class="bRight bBottom bLeft TD20">货位号</td>
+                    <td colspan="3" class="bRight bBottom">A04-08-B03</td>
+                </tr>
+            </table>
+            <table cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="bTop bRight bBottom bLeft TD20">配件号</td>
+                    <td class="bTop bRight bBottom">XB-8103122</td>
+                    <td class="bTop bRight bBottom TD20">适用车型</td>
+                    <td class="bTop bRight bBottom TD30">(AB)(AC)(XK)(XL)(AK)(AB)</td>
+                </tr>
+                <tr>
+                    <td class="bRight bBottom bLeft TD20">配件名称</td>
+                    <td class="bRight bBottom">暖风机水管0.3米</td>
+                    <td class="bRight bBottom TD20">出库价</td>
+                    <td class="bRight bBottom TD30">12.50</td>
+                </tr>
+                <tr>
+                    <td class="bRight bBottom bLeft TD20">货位号</td>
+                    <td colspan="3" class="bRight bBottom">A04-08-B03</td>
+                </tr>
+            </table>
+            <div class="line"></div>
+        </div>
+        <script>let btn = document.querySelector(".print"); btn.addEventListener("click", function () { window.print(); })</script>
+    </div>
+</body>
+
+</html>
