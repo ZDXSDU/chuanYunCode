@@ -1,0 +1,22 @@
+{
+    "name": "氚云页面自动刷新",
+    "description": "实现页面自动刷新功能 在与氚云的仪表盘页面搭配使用时可以起到很好的效果. by ZDXSDU",
+    "version": "1.0",
+    "manifest_version": 2,
+    "content_scripts": [
+        {"matches": ["<all_urls>"], "js": ["index.js"]}
+    ],
+    "icons": {
+        "16": "ICON_16.png",
+        "48": "ICON_48.png",
+        "128": "ICON_128.png"
+    },
+    "browser_action": {
+        "default_icon": {
+                "16": "ICON_16.png",
+                "24": "ICON_24.png",
+                "32": "ICON_32.png"
+            },
+        "default_title": "ZDXSDU"
+    }
+}
