@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>示例代码</title>
+</head>
+
+<body>
+    <script>
+        let PJH_A = "1";
+        let PJH_B = "2";
+        let PJH_C = "3";
+        let PJH_D = "4";
+        let PJH_E = "5";
+        let PJH_F = "6";
+
+
+        let MY_Array = []; // 定义了一个空数组
+        let MY_Array2 = ["1", "1", "1", "1", "1", "1"]; // 定义了一个数组 "1": 数组里面的【元素】
+        // 数组的长度：数组中元素的个数就是数组的长度  MY_Array2的长度是 6 Length
+        console.log(MY_Array2.length); // 获取MY_Array2数组的长度 语法：数组名.length
+
+        // 数组的索引（又名下标）  从数组的开始一直到数组的结尾 排排坐 从0开始到数组长度-1结束
+        // 取 MY_Array2 第三个元素的值（访问数组中的元素）
+        // 语法： 数组名[元素的索引]
+        console.log(MY_Array2[3]);
+
+        // 获取脑袋和腚
+        console.log(MY_Array2[0]);
+        console.log(MY_Array2[MY_Array2.length - 1]);
+
+
+
+        // 我要在MY_Array2腚后头追加元素
+        // 语法： 数组名.push(要追加的元素)
+        MY_Array2.push("2"); // 动作
+
+
+        // 在数组的最前方插入元素
+        // 数组名.unshift(要追加的元素)
+        MY_Array2.unshift("3");
+
+        // 把数组里面第三个元素改成"5"
+        MY_Array2[3] = "5";
+        MY_Array2[4] = "小狗";
+
+        // 交换数组内两个元素的值 
+        // 把 “小狗” 和 “2” 交换位置
+        let c = MY_Array2[4]; // XIAOGOU 
+        MY_Array2[4] = MY_Array2[MY_Array2.length - 1];
+        MY_Array2[MY_Array2.length - 1] = c;
+        console.log(MY_Array2);
+
+        /********************************************************************************************************/
+        // 顺序结构
+        // 分支结构  if-else
+        // 循环结构  
+
+        for (let i = 0; i < 10; i++) {
+            // console.log("下午好 这是第" + i + "次循环");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // [0-99]
+        let yiBai = [];
+        for (let j = 1; j < 100; j++) {
+            yiBai.push(j);
+        }
+        // console.log(yiBai);
+
+        // [99-0]  作用域
+        let ghsajdjahs = [];
+        for (let z = 99; z >= -10; z--) {
+            ghsajdjahs.push(z);
+        }
+        // console.log(ghsajdjahs);
+
+        let man = ["ZDXSDU", "老商", "老林", "王哥"];
+        for (let s = 0; s < man.length; s++) {
+            console.log("给" + man[s] + "倒水"); // 遍历man数组
+        }
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

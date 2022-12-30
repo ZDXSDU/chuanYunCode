@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let a = "10";
+        // let b = "20";
+        // console.log("a:" + a);
+        // console.log("b:" + b);
+
+        // let c = a;
+        // a = b;
+        // b = c;
+
+        // console.log("a:" + a);
+        // console.log("b:" + b);
+
+
+        //获取当前时间
+        function FormatDate() {
+            var now = new Date();
+            var year = now.getFullYear(); // 2022
+            var month = now.getMonth(); // 12
+            var date = now.getDate(); // 30
+            month = month + 1;
+
+            month = month < 10 ? "0" + month : month; // 三元表达式
+            date = date < 10 ? "0" + date : date;
+
+            var time = year + "-" + month + "-" + date; // 2022-12-30
+            return time;
+        }
+        var today_time = FormatDate(); // 2022-12-30
+        if (today_time >= '2019-07-29') {
+            alert("活动已结束");
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 关键字 var let const if for function 
+        // 方法（函数）的调用：语法：方法名(参数)
+        // 函数封装的语法
+        /*
+        function 函数名(参数列表) {
+            函数体
+        }
+        */
+
+        // 函数不调用 不执行
+        function DaoShui() { // 定义、封装方法
+            console.log("倒水");
+        }
+        DaoShui(); // 调用这个方法
+
+
+
+
+
+
+
+        let ren = "laoshang";
+        ren = "老林";
+        DaoShuiWith(ren);
+
+        function DaoShuiWith(i) {
+            console.log("给" + i + "倒水");
+        }
+
+
+        function DaoSomethingSomebody(thing, body) {
+            console.log("给" + body + "倒" + thing);
+        }
+
+        let man = ["ZDXSDU", "老商", "老林", "王哥"];
+        let man2 = ["白开水", "卡布奇诺", "蓝山", "牛栏山"];
+        DaoSomethingSomebody(man2[man2.length - 1], man[1]);
+
+        // DaoShuiWith(实参);
+        // function DaoShuiWith(形参) {
+        // console.log("给" + i + "倒水");
+        // }
+
+
+
+        // 对象  属性、方法
+        // let a = {
+        //     属性名字：属性的值，
+        //     属性2名字：属性2的值，
+        //     方法名：function（）{
+
+        //     }
+        // };
+        let laolin = {
+            high: 1.8,
+            sex: "不清楚",
+            birthday: "1999.05.15",
+            xiedaima: function () {
+                console.log("写代码");
+            },
+            tanlianai: () => {
+                return "谈恋爱"; // 返回值 终止函数
+            },
+            suanshu: (a, b) => {
+                return a + b;
+            }
+        };
+
+        laolin.sex = "男";
+
+        console.log(laolin.sex);
+        laolin.xiedaima();
+
+        laolin.tanlianai();
+        console.log(laolin.xiedaima()); // underfind
+        console.log(laolin.tanlianai()); // 
+
+
+        let a = laolin.suanshu(55, 55);
+        console.log(a);
+    </script>
+</body>
+
+</html>
